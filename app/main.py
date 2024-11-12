@@ -5,7 +5,8 @@ from .routers import post, user, vote, auth
 
 from .database import engine
 
-models.Base.metadata.create_all(bind=engine)   # Creates all models in the DB. Commented after Alembic implementation.
+# models.Base.metadata.create_all(bind=engine)   Creates all models in the DB. Used in Render deployment.
+# models.Base.metadata.create_all(bind=engine)   Commented after Alembic implementation.
 
 app = FastAPI()
 
