@@ -1,4 +1,4 @@
-from .database import Base
+from .database import Base          # SQLAlchemy Models
 from sqlalchemy import Column, Integer, String, Boolean
 from sqlalchemy.types import TIMESTAMP
 from sqlalchemy.schema import ForeignKey

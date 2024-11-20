@@ -7,7 +7,7 @@ from .database import engine
 
 # models.Base.metadata.create_all(bind=engine)   Creates all models in the DB. Used in Render deployment. Commented after Alembic implementation.
 
-app = FastAPI()
+app = FastAPI(title="Social Media App / NAT")
 
 origins = ["*"]     # All domains allowed.
 
