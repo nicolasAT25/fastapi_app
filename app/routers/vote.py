@@ -20,6 +20,7 @@ def vote(vote: schemas.Vote, db: Session=Depends(get_db), current_user: int = De
 
     vote_query = db.query(models.Vote).filter(models.Vote.post_id == vote.post_id, models.Vote.user_id == current_user.id) # Filters separated by ','
     found_vote = vote_query.first()
+    
     if vote.vote_dir == True:
         if found_vote:
             raise HTTPException(status_code=status.HTTP_409_CONFLICT,
