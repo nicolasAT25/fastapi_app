@@ -4,10 +4,10 @@ name: Build and Deploy Code
 on: [push, pull_request]  # Here we are not specifying particular branches(s)
 
 jobs:
-job1:
-  runs-on: ubuntu-latest
-  steps:
-    - name: pulling git repo
-      uses: actions/checkout@v4
-    - name: say hi to nicolas
-      run: echo "hello nicolas"
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: pulling git repo
+        uses: actions/checkout@v4
+      - name: say hi to nicolas
+        run: echo "hello nicolas"
