@@ -70,7 +70,7 @@ jobs:
           context: .
           push: true
           tags: ${{ vars.DOCKERHUB_USERNAME }}/fastapi:latest
-          cache-from: type=registry,ref=user/app:latest
+          cache-from: type=registry,ref=${{ vars.DOCKERHUB_USERNAME }}/fastapi:latest
           cache-to: type=inline
 
       # - name: Login to DockerHub
