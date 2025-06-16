@@ -27,7 +27,7 @@ def get_db():
         db.close()
         
 
-# This is just for dicumentation and see how to retrieve data with psycopg.
+# This is just for documentation and see how to retrieve data with psycopg.
 # while True:
 #     try:
 #         conn = psycopg.connect(host='localhost', dbname='fastapi', user='postgres', password='nicopostgres', 

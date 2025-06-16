@@ -1,0 +1,13 @@
+name: Build and Deploy Code
+
+# Action(s) that triggers our workflow. "on" can be a list of actions [push, pull_request]
+on: [push, pull_request]  # Here we are not specifying particular branches(s)
+
+jobs:
+job1:
+  runs-on: ubuntu-latest
+  steps:
+    - name: pulling git repo
+      uses: actions/checkout@v4
+    - name: say hi to nicolas
+      run: echo "hello nicolas"

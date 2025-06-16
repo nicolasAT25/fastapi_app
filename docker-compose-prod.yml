@@ -1,0 +1,41 @@
+# Docker compose version (obsolete)
+# version: "3"
+
+# Service/Container called api. "build" in the current directory (.). Ports to open (array or dashes. Syntax <port on localhost>:<port on container>),
+# if we recieve traffic from localhost we forward it to the port on the container. Port is the one our app listens to.
+services:
+  api:
+    image: nicodocker25/fastapi
+    ports: 
+      - 80:8000 
+    # Command to create the tables in the postgres container using alembic
+    # command: bash -c "alembic upgrade head && uvicorn app.main:app --host 0.0.0.0 --port 8000"
+    depends_on:
+      - postgres
+
+    # env_file:
+    #   - ./.env    
+    environment:
+      - DATABASE_HOSTNAME=${DATABASE_HOSTNAME}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - DATABASE_NAME=${DATABASE_NAME}
+      - DATABASE_USERNAME=${DATABASE_USERNAME}
+      - SECRET_KEY=${SECRET_KEY}
+      - ALGORITHM=${ALGORITHM}
+      - ACCESS_TOKEN_EXPIRE_MINUTES=${ACCESS_TOKEN_EXPIRE_MINUTES}
+  
+  postgres:
+    image: postgres
+    environment:
+      # Credentails don't have to be the same as in the local machine
+      - POSTGRES_PASSWORD=${DATABASE_PASSWORD}
+      - POSTGRES_DB=${DATABASE_NAME}
+
+    volumes:
+      # Path in the container that postgres is going to write to (local machine). postgres-db is the name we give to the volume
+      - postgres-db:/var/lib/postgresql/data
+
+# Globally define where the app is going to write to. Multiple containers can acces to volumes
+volumes:
+    postgres-db:
