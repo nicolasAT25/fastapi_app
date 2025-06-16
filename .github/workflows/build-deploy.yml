@@ -84,19 +84,20 @@ jobs:
       - name: pulling git repo    # Step 1
         uses: actions/checkout@v4
 
-      - name: Deploy to production         # Step 2
-        uses: johnbeynon/render-deploy-action@v0.0.8
-        with:
-          service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
-          api-key: ${{ secrets.MY_RENDER_API_KEY }}
-          wait-for-success: true
+      # - name: Deploy to production         # Step 2
+      #   uses: johnbeynon/render-deploy-action@v0.0.8
+      #   with:
+      #     service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
+      #     api-key: ${{ secrets.MY_RENDER_API_KEY }}
+      #     wait-for-success: true
 
-      - name: deploy to ubuntu server     # Step 3
+      - name: deploy to ubuntu server     # Step 2
         uses: appleboy/ssh-action@v1
         with:
           host: ${{ secrets.PROD_HOST }}
           username: ${{secrets.PROD_USERNAME}}
           password: ${{ secrets.PROD_PASSWORD }}
+          port: ${{ secrets.PROD_PORT }}
           script: |
             cd app/src
             git pull
