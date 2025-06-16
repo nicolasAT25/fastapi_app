@@ -94,12 +94,12 @@ jobs:
       - name: deploy to ubuntu server     # Step 2
         uses: appleboy/ssh-action@v1
         with:
-          host: ${{ secrets.PROD_HOST }}
-          username: ${{secrets.PROD_USERNAME}}
-          password: ${{ secrets.PROD_PASSWORD }}
-          port: ${{ secrets.PROD_PORT }}
-          script: |
-            cd app/src
-            git pull
-            echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          password: ${{ secrets.PASSWORD }}
+          script: whoami
+          # script: |
+          #   cd app/src
+          #   git pull
+          #   echo ${{secrets.PROD_PASSWORD}} | sudo -S systemctl restart api
           # Flag -S allows to read password or accept it as an argument
