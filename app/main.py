@@ -26,4 +26,4 @@ app.include_router(auth.router)
 
 @app.get("/")
 def root():
-    return {"message": "Bind mount works!"}
+    return {"message": "Successfully deployed from CI/CD pipeline !"}
