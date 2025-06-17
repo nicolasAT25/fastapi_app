@@ -27,4 +27,4 @@ app.include_router(auth.router)
 @app.get("/")
 def root():
     # return {"message": "Successfully deployed from CI/CD pipeline !"}
-    return {"message": "Pushing out to Ubuntu !"}
+    return {"message": "Pushing out to Ubuntu 😀"}
